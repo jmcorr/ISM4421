@@ -53,6 +53,8 @@ const state = {
 };
 
 const els = {
+  themeToggle: document.getElementById("theme-toggle"),
+  themeColorMeta: document.getElementById("theme-color-meta"),
   unitToggle: document.getElementById("unit-toggle"),
   searchForm: document.getElementById("search-form"),
   cityInput: document.getElementById("city-input"),
@@ -318,6 +320,53 @@ els.unitToggle.addEventListener("click", () => {
   els.unitToggle.textContent = `°${state.unit}`;
   render();
 });
+
+// Theme (dark / clear) toggle
+
+const THEME_KEY = "fau-weather-theme";
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  els.themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+  els.themeToggle.setAttribute(
+    "aria-label",
+    theme === "dark" ? "Switch to clear theme" : "Switch to dark theme"
+  );
+  if (els.themeColorMeta) {
+    els.themeColorMeta.setAttribute("content", theme === "dark" ? "#00050d" : "#003366");
+  }
+}
+
+function getStoredTheme() {
+  try {
+    return localStorage.getItem(THEME_KEY);
+  } catch (e) {
+    return null;
+  }
+}
+
+function storeTheme(theme) {
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch (e) {
+    // storage unavailable (private browsing, etc.) — theme just won't persist
+  }
+}
+
+function initTheme() {
+  const saved = getStoredTheme();
+  const theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  applyTheme(theme);
+}
+
+els.themeToggle.addEventListener("click", () => {
+  const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+  const next = current === "dark" ? "light" : "dark";
+  storeTheme(next);
+  applyTheme(next);
+});
+
+initTheme();
 
 // Initial load: default to FAU / Boca Raton
 loadWeather(FAU_LOCATION.latitude, FAU_LOCATION.longitude, FAU_LOCATION.name);
