@@ -1,0 +1,399 @@
+:root {
+  --fau-blue: #003366;
+  --fau-blue-dark: #001f3f;
+  --fau-red: #cc0000;
+  --fau-electric-blue: #126bd9;
+  --fau-silver: #8a8d8f;
+  --fau-gray: #cccccc;
+  --white: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.96);
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 20, 50, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--fau-blue-dark);
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sky-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(160deg, var(--fau-blue) 0%, var(--fau-electric-blue) 55%, #4a90d9 100%);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  color: var(--white);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo {
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.brand-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.brand-subtitle {
+  font-size: 0.8rem;
+  color: var(--fau-gray);
+}
+
+.unit-toggle {
+  background: var(--fau-red);
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.unit-toggle:hover {
+  background: #a30000;
+  transform: translateY(-1px);
+}
+
+/* Main layout */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+/* Search */
+.search-panel {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+#search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#city-input {
+  flex: 1 1 220px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: var(--shadow);
+}
+
+#search-form button {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+#search-form button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+#search-form button[type="submit"] {
+  background: var(--fau-red);
+  color: var(--white);
+}
+
+#locate-btn,
+#fau-btn {
+  background: var(--white);
+  color: var(--fau-blue);
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  z-index: 20;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.search-results li {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.search-results li:hover,
+.search-results li:focus {
+  background: rgba(18, 107, 217, 0.12);
+}
+
+.status-message {
+  color: var(--white);
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+/* Current weather card */
+.current-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px;
+  margin-bottom: 24px;
+  border-top: 6px solid var(--fau-red);
+}
+
+.current-main {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.current-icon {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.current-temp {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--fau-blue);
+}
+
+.current-condition {
+  font-size: 1.1rem;
+  color: var(--fau-silver);
+  font-weight: 600;
+}
+
+.current-location {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--fau-blue);
+}
+
+.current-updated {
+  font-size: 0.8rem;
+  color: var(--fau-silver);
+  margin-bottom: 12px;
+}
+
+.current-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 12px;
+  border-top: 1px solid var(--fau-gray);
+  padding-top: 16px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fau-silver);
+}
+
+.detail-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fau-blue-dark);
+}
+
+/* Hourly */
+.hourly-section,
+.daily-section {
+  margin-bottom: 24px;
+}
+
+.hourly-section h2,
+.daily-section h2 {
+  color: var(--white);
+  font-size: 1.05rem;
+  margin: 0 0 10px 4px;
+}
+
+.hourly-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.hourly-item {
+  flex: 0 0 auto;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-align: center;
+  min-width: 74px;
+  box-shadow: var(--shadow);
+}
+
+.hourly-time {
+  font-size: 0.75rem;
+  color: var(--fau-silver);
+  font-weight: 600;
+}
+
+.hourly-icon {
+  font-size: 1.6rem;
+  margin: 6px 0;
+}
+
+.hourly-temp {
+  font-weight: 700;
+  color: var(--fau-blue);
+}
+
+/* Daily */
+.daily-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 10px;
+}
+
+.daily-item {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.daily-day {
+  font-weight: 700;
+  color: var(--fau-blue);
+  font-size: 0.85rem;
+}
+
+.daily-icon {
+  font-size: 1.7rem;
+  margin: 8px 0;
+}
+
+.daily-temps {
+  font-size: 0.85rem;
+}
+
+.daily-high {
+  font-weight: 700;
+  color: var(--fau-blue-dark);
+}
+
+.daily-low {
+  color: var(--fau-silver);
+}
+
+.daily-rain {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: var(--fau-electric-blue);
+  font-weight: 600;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  color: var(--fau-gray);
+  font-size: 0.8rem;
+  padding: 18px 16px 26px;
+}
+
+.site-footer p {
+  margin: 4px 0;
+}
+
+.attribution a {
+  color: var(--white);
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 14px 16px;
+  }
+
+  .brand-title {
+    font-size: 1.05rem;
+  }
+
+  .current-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .current-temp {
+    font-size: 2.4rem;
+  }
+}

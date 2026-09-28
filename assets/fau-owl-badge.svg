@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 150" width="120" height="150" role="img" aria-labelledby="fauBadgeTitle">
+  <title id="fauBadgeTitle">FAU Owls badge</title>
+
+  <!-- Card backing so the badge stays legible on any background -->
+  <rect x="2" y="2" width="116" height="146" rx="16" fill="#ffffff" stroke="#cccccc" stroke-width="1" />
+
+  <!-- Ear tufts -->
+  <polygon points="30,26 40,6 46,30" fill="#003366" stroke="#cc0000" stroke-width="3" stroke-linejoin="round" />
+  <polygon points="90,26 80,6 74,30" fill="#003366" stroke="#cc0000" stroke-width="3" stroke-linejoin="round" />
+
+  <!-- Badge circle -->
+  <circle cx="60" cy="58" r="50" fill="#003366" stroke="#cc0000" stroke-width="5" />
+  <circle cx="60" cy="58" r="50" fill="none" stroke="#126bd9" stroke-width="1.5" opacity="0.6" />
+
+  <!-- Eyes -->
+  <circle cx="42" cy="56" r="16" fill="#ffffff" />
+  <circle cx="78" cy="56" r="16" fill="#ffffff" />
+  <circle cx="42" cy="56" r="7.5" fill="#001f3f" />
+  <circle cx="78" cy="56" r="7.5" fill="#001f3f" />
+  <circle cx="44.5" cy="53.5" r="2.2" fill="#ffffff" />
+  <circle cx="80.5" cy="53.5" r="2.2" fill="#ffffff" />
+
+  <!-- Beak -->
+  <polygon points="60,64 54,74 66,74" fill="#cc0000" />
+
+  <!-- Wordmark (navy on the white card, so it stays readable everywhere) -->
+  <text x="60" y="120" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="32" fill="#003366">FAU</text>
+  <rect x="30" y="127" width="60" height="4" rx="2" fill="#cc0000" />
+  <text x="60" y="142" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="11" letter-spacing="1.5" fill="#8a8d8f">OWLS</text>
+</svg>

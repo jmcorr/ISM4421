@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAU Owls Weather | Boca Raton</title>
+<meta name="description" content="A weather app for FAU students, themed around Florida Atlantic University, powered by the free Open-Meteo API." />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="sky-bg" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <img src="assets/fau-owl-badge.svg" alt="FAU Owls badge" class="brand-logo" width="56" height="64" />
+    <div class="brand-text">
+      <span class="brand-title">FAU Owls Weather</span>
+      <span class="brand-subtitle">Florida Atlantic University &middot; Boca Raton, FL</span>
+    </div>
+  </div>
+  <button id="unit-toggle" class="unit-toggle" type="button" aria-label="Toggle temperature unit">&deg;F</button>
+</header>
+
+<main>
+  <section class="search-panel">
+    <form id="search-form" autocomplete="off">
+      <label for="city-input" class="visually-hidden">Search for a city</label>
+      <input id="city-input" name="city" type="text" placeholder="Search a city (e.g. Orlando, FL)" />
+      <button type="submit">Search</button>
+      <button type="button" id="locate-btn" title="Use my current location">📍 My Location</button>
+      <button type="button" id="fau-btn" title="Back to FAU / Boca Raton">🦉 FAU</button>
+    </form>
+    <ul id="search-results" class="search-results hidden"></ul>
+  </section>
+
+  <p id="status-message" class="status-message hidden" role="status"></p>
+
+  <section id="current-card" class="current-card hidden">
+    <div class="current-main">
+      <div class="current-icon" id="current-icon" aria-hidden="true">☀️</div>
+      <div class="current-temp-block">
+        <div class="current-temp" id="current-temp">--&deg;</div>
+        <div class="current-condition" id="current-condition">Loading…</div>
+      </div>
+    </div>
+    <div class="current-location" id="current-location">Boca Raton, FL</div>
+    <div class="current-updated" id="current-updated"></div>
+
+    <div class="current-details">
+      <div class="detail">
+        <span class="detail-label">Feels Like</span>
+        <span class="detail-value" id="detail-feels">--&deg;</span>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Humidity</span>
+        <span class="detail-value" id="detail-humidity">--%</span>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Wind</span>
+        <span class="detail-value" id="detail-wind">-- mph</span>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Sunrise</span>
+        <span class="detail-value" id="detail-sunrise">--:--</span>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Sunset</span>
+        <span class="detail-value" id="detail-sunset">--:--</span>
+      </div>
+      <div class="detail">
+        <span class="detail-label">Rain Chance</span>
+        <span class="detail-value" id="detail-precip">--%</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="hourly-section" class="hourly-section hidden">
+    <h2>Today, Hour by Hour</h2>
+    <div class="hourly-row" id="hourly-row"></div>
+  </section>
+
+  <section id="daily-section" class="daily-section hidden">
+    <h2>7-Day Forecast</h2>
+    <div class="daily-grid" id="daily-grid"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Built by an FAU Owl for FAU Owls. Go Owls! 🦉</p>
+  <p class="attribution">
+    Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a>
+    (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>) &middot;
+    No API key required.
+  </p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
